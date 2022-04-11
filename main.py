@@ -13,10 +13,11 @@ def game():
       print("You have", account_funds,"dollars in your account.")
       bet = input("What would you like to bet on? (Numbers: 0-36, Colors: Black, Red, Green)")
       wager = int(input("How much would you like to wager?"))
+#calculate payout based on risk of wager
       number_payout = int(wager)*37
       green_payout = int(wager)*37
       redblack_payout = int(wager)*2
-      
+#if bet is on a number
       if (bet.isdigit() and int(wager) <= int(account_funds) and int(wager) > 0):
         if (int(bet) <= 36):
           print("You are betting on", bet+". Good Luck!")
@@ -30,7 +31,7 @@ def game():
             print("The number was",str(roll)+".")
         else:
           print("Invalid number. Choose a number between 0-36")
-
+#if bet is on a color
       elif (bet.isalpha() and int(wager) <= int(account_funds)):
         if (bet.upper() == "BLACK"):
           print("You are betting on black. Good Luck!")
@@ -73,9 +74,10 @@ def game():
             print("The color was red.")
         else:
           print("Invalid color.") 
-  
+#if wager is more than what they have
       elif (int(wager) > int(account_funds)):
         print("Insufficient funds.")
+#if all money is lost
     else:
       print("Game Over. No more funds.")
       is_running = False
